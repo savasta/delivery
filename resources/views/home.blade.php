@@ -22,83 +22,73 @@ The above copyright notice and this permission notice shall be included in all c
   <link rel="icon" type="image/png" href="../assetsdash/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard by Creative Tim
+    FGS
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
+
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
   <!-- CSS Files -->
   <link href="../assetsdash/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assetsdash/demo/demo.css" rel="stylesheet" />
+  <style>
+      .donotShow_row{
+          display: none;
+      }
+  </style>
 </head>
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assetsdash/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="orange" data-background-color="white" data-image="../assetsdash/img/sidebar-1.jpg">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo text-center">
-          <img src="assetsdash/img/fgs_logo.png" alt="" style="width:80px;height:60px;" />
+          <img src="assetsdash/img/fgs_logo.png" alt="fgs_logo" style="width:80px;height:60px;" />
         </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active  ">
             <a class="nav-link" href="/home">
               <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
+              <p>Accueil</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="/user">
-              <i class="material-icons">person</i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
+            <a class="nav-link" href="/createdcolis">
               <i class="material-icons">content_paste</i>
-              <p>Table List</p>
+              <p>Colis crée</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+            <a class="nav-link" href="/createcolis">
               <i class="material-icons">library_books</i>
-              <p>Typography</p>
+              <p>Créer nouveau colis</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
+            <a class="nav-link" href="/management/colis">
               <i class="material-icons">bubble_chart</i>
-              <p>Icons</p>
+              <p>Gestion des colis</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
+            <a class="nav-link" href="/importexcel">
               <i class="material-icons">location_ons</i>
-              <p>Maps</p>
+              <p>Importation excel</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
+            <a class="nav-link" href="/guideuser">
               <i class="material-icons">notifications</i>
-              <p>Notifications</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./rtl.html">
-              <i class="material-icons">language</i>
-              <p>RTL Support</p>
-            </a>
-          </li>
-          <li class="nav-item active-pro ">
-            <a class="nav-link" href="./upgrade.html">
-              <i class="material-icons">unarchive</i>
-              <p>Upgrade to PRO</p>
+              <p>Guide utulisateur</p>
             </a>
           </li>
         </ul>
@@ -109,7 +99,7 @@ The above copyright notice and this permission notice shall be included in all c
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:;">Dashboard</a>
+            <a class="navbar-brand" href="javascript:;">Accueil</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -128,7 +118,7 @@ The above copyright notice and this permission notice shall be included in all c
               </div>
             </form>
             <ul class="navbar-nav">
-              <li class="nav-item">
+              <li class="nav-item-warning">
                 <a class="nav-link" href="javascript:;">
                   <i class="material-icons">dashboard</i>
                   <p class="d-lg-none d-md-block">
@@ -182,76 +172,138 @@ The above copyright notice and this permission notice shall be included in all c
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="col-lg-4 col-md-6 col-sm-6" >
               <div class="card card-stats">
-                <div class="card-header card-header-warning card-header-icon">
-                  <div class="card-icon">
-                    <i class="material-icons">content_copy</i>
+                <div class="card-header card-header-warning card-header-icon center">
+                  <div class="card-icon" type="button" id='created' href='javascript:void(0)' >
+                    <h3 class="card-title"> {{ $created }}</h3>
                   </div>
-                  <p class="card-category">Used Space</p>
-                  <h3 class="card-title">49/50
-                    <small>GB</small>
+
+                  <h3 class="card-title">
+                    Crée
                   </h3>
                 </div>
                 <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons text-danger">warning</i>
-                    <a href="javascript:;">Get More Space...</a>
-                  </div>
+
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-success card-header-icon">
-                  <div class="card-icon">
-                    <i class="material-icons">store</i>
-                  </div>
-                  <p class="card-category">Revenue</p>
-                  <h3 class="card-title">$34,245</h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">date_range</i> Last 24 Hours
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-danger card-header-icon">
-                  <div class="card-icon">
-                    <i class="material-icons">info_outline</i>
-                  </div>
-                  <p class="card-category">Fixed Issues</p>
-                  <h3 class="card-title">75</h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">local_offer</i> Tracked from Github
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="col-lg-4 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-info card-header-icon">
-                  <div class="card-icon">
-                    <i class="fa fa-twitter"></i>
+                  <div class="card-icon" type="button" id='undergoing' >
+                    <h3 class="card-title"> {{ $undergoing }} </h3>
                   </div>
-                  <p class="card-category">Followers</p>
-                  <h3 class="card-title">+245</h3>
+
+                  <h3 class="card-title">En cours</h3>
                 </div>
                 <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">update</i> Just Updated
-                  </div>
                 </div>
               </div>
             </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-success card-header-icon" id='delivered'>
+                    <div class="card-icon" type="button" >
+                      <h3 class="card-title"> {{ $livred }} </h3>
+                    </div>
+                    <h3 class="card-title">Livré</h3>
+                  </div>
+                  <div class="card-footer">
+
+                  </div>
+                </div>
+              </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-primary card-header-icon">
+                  <div class="card-icon" type="button" id='payed' >
+                    <h3 class="card-title"> {{ $payed}} </h3>
+                  </div>
+                  <h3 class="card-title">Colis payé</h3>
+                </div>
+                <div class="card-footer">
+
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-danger card-header-icon" id='prepreturn'>
+                    <div class="card-icon" type="button" >
+                      <h3 class="card-title">{{ $prepreturn }}</h3>
+                    </div>
+                    <h3 class="card-title">Préparation retour</h3>
+                  </div>
+                  <div class="card-footer">
+                  </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-secondary card-header-icon" id='returned'>
+                    <div class="card-icon" type="button" >
+                      <h3 class="card-title">{{ $returned }}</h3>
+                    </div>
+                    <h3 class="card-title">Retourné expediteur</h3>
+                  </div>
+                  <div class="card-footer">
+                  </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-6 col-sm-6">
+                <button type="button" class="btn btn-warning col-lg-12 col-md-6 col-sm-6" id='allcolis'>
+                    Tous les colis : {{ $allcolis}}
+                </button>
+            </div>
+
+        </div>
+
+          <div class="col-lg-12 col-md-6 col-sm-6">
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Référence</th>
+                        <th>Date</th>
+                        <th>Nom</th>
+                        <th>Addresse </th>
+                        <th>Téléphone</th>
+                        <th>COD</th>
+                        <th>Gouvernorate</th>
+                        <th>Etat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($colis as $coli)
+                    <tr>
+                        <td>{{ $coli->id }}</td>
+                        <td>{{$coli->created_at}}</td>
+                        <td>{{$coli->nomclient}}</td>
+                        <td>{{$coli->adresseclient}}</td>
+                        <td>{{$coli->numclient}}</td>
+                        <td>{{$coli->cr}}</td>
+                        <td>{{$coli->gouvernorat}}</td>
+                        <td>{{$coli->etat}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+                <tfoot>
+                    <tr>
+                         <th>Référence</th>
+                        <th>Date</th>
+                        <th>Nom</th>
+                        <th>Addresse </th>
+                        <th>Téléphone</th>
+                        <th>COD</th>
+                        <th>Gouvernorate</th>
+                        <th>Etat</th>
+                    </tr>
+                </tfoot>
+            </table>
           </div>
           </div>
-      </div>
+        </div>
       <footer class="footer">
         <div class="container-fluid">
           <nav class="float-left">
@@ -289,74 +341,6 @@ The above copyright notice and this permission notice shall be included in all c
       </footer>
     </div>
   </div>
-  <div class="fixed-plugin">
-    <div class="dropdown show-dropdown">
-      <a href="#" data-toggle="dropdown">
-        <i class="fa fa-cog fa-2x"> </i>
-      </a>
-      <ul class="dropdown-menu">
-        <li class="header-title"> Sidebar Filters</li>
-        <li class="adjustments-line">
-          <a href="javascript:void(0)" class="switch-trigger active-color">
-            <div class="badge-colors ml-auto mr-auto">
-              <span class="badge filter badge-purple" data-color="purple"></span>
-              <span class="badge filter badge-azure" data-color="azure"></span>
-              <span class="badge filter badge-green" data-color="green"></span>
-              <span class="badge filter badge-warning" data-color="orange"></span>
-              <span class="badge filter badge-danger" data-color="danger"></span>
-              <span class="badge filter badge-rose active" data-color="rose"></span>
-            </div>
-            <div class="clearfix"></div>
-          </a>
-        </li>
-        <li class="header-title">Images</li>
-        <li class="active">
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="../assetsdash/img/sidebar-1.jpg" alt="">
-          </a>
-        </li>
-        <li>
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="../assetsdash/img/sidebar-2.jpg" alt="">
-          </a>
-        </li>
-        <li>
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="../assetsdash/img/sidebar-3.jpg" alt="">
-          </a>
-        </li>
-        <li>
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="../assetsdash/img/sidebar-4.jpg" alt="">
-          </a>
-        </li>
-        <li class="button-container">
-          <a href="https://www.creative-tim.com/product/material-dashboard" target="_blank" class="btn btn-primary btn-block">Free Download</a>
-        </li>
-        <!-- <li class="header-title">Want more components?</li>
-            <li class="button-container">
-                <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">
-                  Get the pro version
-                </a>
-            </li> -->
-        <li class="button-container">
-          <a href="https://demos.creative-tim.com/material-dashboard/docs/2.1/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
-            View Documentation
-          </a>
-        </li>
-        <li class="button-container github-star">
-          <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-        </li>
-        <li class="header-title">Thank you for 95 shares!</li>
-        <li class="button-container text-center">
-          <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
-          <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
-          <br>
-          <br>
-        </li>
-      </ul>
-    </div>
-  </div>
   <!--   Core JS Files   -->
   <script src="../assetsdash/js/core/jquery.min.js"></script>
   <script src="../assetsdash/js/core/popper.min.js"></script>
@@ -371,7 +355,7 @@ The above copyright notice and this permission notice shall be included in all c
   <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
   <script src="../assetsdash/js/plugins/jquery.bootstrap-wizard.js"></script>
   <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-  <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+  <script src="../assetsdash/js/plugins/bootstrap-selectpicker.js"></script>
   <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
   <script src="../assetsdash/js/plugins/bootstrap-datetimepicker.min.js"></script>
   <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
@@ -401,6 +385,101 @@ The above copyright notice and this permission notice shall be included in all c
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assetsdash/demo/demo.js"></script>
   <script>
+      $(document).ready(function() {
+    $('#example').DataTable({
+        paging: false,
+        scrollY: 700
+    });
+    } );
+    //////////////////////////////////////// created button javascript////////
+    document.getElementById('created').addEventListener('click',function(){
+        table=document.getElementById('example');
+        tr=table.querySelector('tbody').getElementsByTagName('tr');
+         for(var i=0;i<tr.length;i++){
+             if(tr[i].getElementsByTagName('td')[7].innerText.indexOf('crée')>-1 ){
+                 tr[i].classList.remove('donotShow_row')
+             }else{
+                tr[i].classList.add('donotShow_row')
+             }
+         }
+    });
+        //////////////////////////////////////// undergoing button javascript////////
+        document.getElementById('undergoing').addEventListener('click',function(){
+        table=document.getElementById('example');
+        tr=table.querySelector('tbody').getElementsByTagName('tr');
+         for(var i=0;i<tr.length;i++){
+             if(tr[i].getElementsByTagName('td')[7].innerText.indexOf('encour')>-1 ){
+                 tr[i].classList.remove('donotShow_row')
+             }else{
+                tr[i].classList.add('donotShow_row')
+             }
+         }
+    });
+        //////////////////////////////////////// delivered button javascript////////
+        document.getElementById('delivered').addEventListener('click',function(){
+        table=document.getElementById('example');
+        tr=table.querySelector('tbody').getElementsByTagName('tr');
+         for(var i=0;i<tr.length;i++){
+             if(tr[i].getElementsByTagName('td')[7].innerText.indexOf('livré')>-1 ){
+                 tr[i].classList.remove('donotShow_row')
+             }else{
+                tr[i].classList.add('donotShow_row')
+             }
+         }
+    });
+
+        //////////////////////////////////////// payed button javascript////////
+            document.getElementById('payed').addEventListener('click',function(){
+        table=document.getElementById('example');
+        tr=table.querySelector('tbody').getElementsByTagName('tr');
+         for(var i=0;i<tr.length;i++){
+             if(tr[i].getElementsByTagName('td')[7].innerText.indexOf('payé')>-1 ){
+                 tr[i].classList.remove('donotShow_row')
+             }else{
+                tr[i].classList.add('donotShow_row')
+             }
+         }
+    });
+        //////////////////////////////////////// prepreturn button javascript////////
+        document.getElementById('prepreturn').addEventListener('click',function(){
+        table=document.getElementById('example');
+        tr=table.querySelector('tbody').getElementsByTagName('tr');
+         for(var i=0;i<tr.length;i++){
+             if(tr[i].getElementsByTagName('td')[7].innerText.indexOf('preretour')>-1 ){
+                 tr[i].classList.remove('donotShow_row')
+             }else{
+                tr[i].classList.add('donotShow_row')
+             }
+         }
+    });
+
+            //////////////////////////////////////// returned button javascript////////
+            document.getElementById('returned').addEventListener('click',function(){
+        table=document.getElementById('example');
+        tr=table.querySelector('tbody').getElementsByTagName('tr');
+         for(var i=0;i<tr.length;i++){
+             if(tr[i].getElementsByTagName('td')[7].innerText.indexOf('retourné')>-1 ){
+                 tr[i].classList.remove('donotShow_row')
+             }else{
+                tr[i].classList.add('donotShow_row')
+             }
+         }
+    });
+
+                //////////////////////////////////////// returned button javascript////////
+                document.getElementById('allcolis').addEventListener('click',function(){
+        table=document.getElementById('example');
+        tr=table.querySelector('tbody').getElementsByTagName('tr');
+         for(var i=0;i<tr.length;i++){
+             if(tr[i].getElementsByTagName('td')[7] ){
+                 tr[i].classList.remove('donotShow_row')
+             }else{
+                tr[i].classList.add('donotShow_row')
+             }
+         }
+    });
+
+    ///////////////////////////////////////
     $(document).ready(function() {
       $().ready(function() {
         $sidebar = $('.sidebar');

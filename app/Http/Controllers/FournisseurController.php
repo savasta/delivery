@@ -72,10 +72,6 @@ class FournisseurController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function test()
-    {
-        return "hello from test";
-    }
 
     /**
      * Update the specified resource in storage.

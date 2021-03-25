@@ -20,9 +20,9 @@
 					<a href="#menu"><span>Menu</span></a>
 				</nav>
                 <img src="images/fgs_logo.png" alt="" style="width:100px;height:80px;" />
-                {{-- <img src="img_girl.jpg" alt="Girl in a jacket" style="width:500px;height:600px;"> --}}
 				<nav class="right">
 					<a href="{{ route('login') }}" class="button alt">Log in</a>
+
 				</nav>
 			</header>
 
@@ -58,7 +58,8 @@
 					<h1>Ipsum sed lorem</h1>
 					<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod<br />sed arcu cras consecuat lorem ipsum dolor sit amet.</p>
 					<ul class="actions">
-						<li><a href="#one" class="button scrolly">Get Started</a></li>
+						<li><a href="{{ route('register') }}" class="button scrolly">Get Started</a></li>
+
 					</ul>
 				</div>
 			</section>

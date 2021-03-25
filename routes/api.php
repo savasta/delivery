@@ -21,4 +21,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('fournisseur/{id}','FournisseurController@get_provider');
 Route::post('fournisseur','FournisseurController@create');
 Route::delete('fournisseur/{id}','FournisseurController@destroy');
-Route::get('/test','FournisseurController@test');
+
+Route::post('colis','ColisController@create');
+Route::get('colis','ColisController@get_colis');
+Route::get('allcolis','ColisController@get_all_colis');
+Route::delete('colis','ColisController@destroy');
+
+
+
+
+

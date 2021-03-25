@@ -18,7 +18,7 @@ The above copyright notice and this permission notice shall be included in all c
   <link rel="icon" type="image/png" href="../assetsdash/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard by Creative Tim
+    FGS
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -38,9 +38,9 @@ The above copyright notice and this permission notice shall be included in all c
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
-        </a></div>
+    <div class="logo text-center">
+        <img src="assetsdash/img/fgs_logo.png" alt="fgs_logo" style="width:80px;height:60px;" />
+      </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item  ">
@@ -50,7 +50,7 @@ The above copyright notice and this permission notice shall be included in all c
             </a>
           </li>
           <li class="nav-item active ">
-            <a class="nav-link" href="./user.html">
+            <a class="nav-link" href="/user">
               <i class="material-icons">person</i>
               <p>User Profile</p>
             </a>
@@ -62,9 +62,9 @@ The above copyright notice and this permission notice shall be included in all c
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+            <a class="nav-link" href="/createcolis">
               <i class="material-icons">library_books</i>
-              <p>Typography</p>
+              <p>crée un colis</p>
             </a>
           </li>
           <li class="nav-item ">
